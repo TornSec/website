@@ -1,1 +1,22 @@
+name: Build and Deploy
+on:
+  push:
+    branches:
+    - main
+    - release/*
 
+jobs:
+  deploy:
+    runs-on: ubuntu-18.04
+    steps:
+    - name: Deploy Website
+      uses: appleboy/ssh-action@v0.1.5
+      with:
+        host: ${{secrets.WEBSERVER}}
+        key: ${{secrets.SSH_KEY}}
+        username: ${{secrets.USER}}
+        
+        script: |
+          cd /var/www
+          git clone git@github.com/TornSec/website.git
+          echo 'Deployed to Webserver'
