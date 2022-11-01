@@ -197,6 +197,12 @@
   color: #9953D7
 }
 
+.home-section .image {
+  position: absolute;
+  left: 55%;
+  bottom: 2%;
+}
+
 #copyright {
   font-size: 11px;
 }
